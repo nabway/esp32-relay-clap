@@ -1,30 +1,26 @@
 #pragma once
-
 /**
- * @file secrets.hpp
- * @brief WiFi, MQTT and Telegram credentials.
- *
- * NEVER commit this file. It is listed in .gitignore.
- * This is a template for secrets.hpp for the repo.
+ * @file secrets.example.hpp
+ * @brief Template for the fields the refactored plug project expects.
+ *        Copy to secrets.hpp and fill in. Do NOT commit secrets.hpp.
  */
 
 namespace secrets {
 
-// ── WiFi ─────────────────────────────────────────────────────────────────────
-constexpr char WIFI_SSID[]     = "YOUR_WIFI_SSID";
-constexpr char WIFI_PASSWORD[] = "YOUR_WIFI_PASSWORD";
+// ── WiFi (multi-network fallback, like Menta) ──────────────────────────────
+// If you only have one AP, point _2 / _3 at the same SSID/password.
+inline constexpr char WIFI_SSID[]       = "MyHomeWiFi";
+inline constexpr char WIFI_PASSWORD[]   = "supersecret";
+inline constexpr char WIFI_SSID_2[]     = "MyHomeWiFi";
+inline constexpr char WIFI_PASSWORD_2[] = "supersecret";
+inline constexpr char WIFI_SSID_3[]     = "Phone-Hotspot";
+inline constexpr char WIFI_PASSWORD_3[] = "hotspotpass";
 
-// ── HiveMQ Cloud (TLS, port 8883) ────────────────────────────────────────────
-constexpr char MQTT_HOST[]     = "YOUR_HOST.s1.eu.hivemq.cloud";
-constexpr int  MQTT_PORT       = 8883;
-constexpr char MQTT_USER[]     = "YOUR_MQTT_USER";
-constexpr char MQTT_PASSWORD[] = "YOUR_MQTT_PASSWORD";
+// ── Telegram ───────────────────────────────────────────────────────────────
+inline constexpr char TELEGRAM_TOKEN[]   = "123456:ABC-yourbottoken";
+inline constexpr char TELEGRAM_CHAT_ID[] = "11111111";   // your numeric chat id, as a string
 
-// Client ID debe ser único por dispositivo
-constexpr char MQTT_CLIENT_ID[] = "esp32-menta-001";
-
-// ── Telegram ─────────────────────────────────────────────────────────────────
-constexpr char TELEGRAM_TOKEN[]   = "YOUR_BOT_TOKEN";
-constexpr char TELEGRAM_CHAT_ID[] = "YOUR_CHAT_ID";
+// ── ESPHome smart plug ───────────────────────────────────────────────────────
+inline constexpr char PLUG_IP[] = "192.168.1.50";
 
 }  // namespace secrets
